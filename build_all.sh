@@ -17,6 +17,6 @@ docker build --platform linux/arm64/v8 . -f Dockerfile -t librdkafka-builder:arm
 docker run --rm -it --mount type=bind,source=./build.sh,destination=/build.sh --mount type=bind,source=./output,destination=/output librdkafka-builder:arm64 bash /build.sh || error "Linux aarch64 build failed"
 docker run --rm -it --mount type=bind,source=./build.sh,destination=/build.sh --mount type=bind,source=./output,destination=/output librdkafka-builder:amd64 bash /build.sh || error "Linux amd64 build failed"
 
-tar -cf arm64.tar.gz -C output/arm64 . || error "Failed to create macOS arm64 tarball"
-tar -cf aarch64.tar.gz -C output/aarch64 . || error "Failed to create linux aarch64 tarball"
-tar -cf x86_64.tar.gz -C output/x86_64 . || error "Failed to create linux amd64 tarball"
+tar -czf arm64.tar.gz -C output/arm64 . || error "Failed to create macOS arm64 tarball"
+tar -czf aarch64.tar.gz -C output/aarch64 . || error "Failed to create linux aarch64 tarball"
+tar -czf x86_64.tar.gz -C output/x86_64 . || error "Failed to create linux amd64 tarball"
