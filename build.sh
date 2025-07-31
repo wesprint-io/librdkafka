@@ -20,9 +20,9 @@ tar -xf "v$VERSION.tar.gz" || error "Decompression failed"
 cd "librdkafka-$VERSION" || error "Failed to enter source directory"
 if [ ! -f "Makefile.config" ]; then
   if [ "$KERNEL" = "Darwin" ]; then
-    ./configure --install-deps --source-deps-only --enable-static --enable-zstd --disable-curl --disable-zlib --enable-gssapi --enable-sasl || error "Failed to configure and compile dependencies"
+    ./configure --install-deps --source-deps-only --enable-static --enable-zstd --disable-curl --disable-zlib --enable-gssapi --enable-sasl --enable-ssl || error "Failed to configure and compile dependencies"
   elif [ "$KERNEL" = "Linux" ]; then
-    ./configure --disable-zstd --disable-curl --disable-zlib --enable-gssapi --enable-sasl || error "Failed to configure and compile dependencies"
+    ./configure --disable-zstd --disable-curl --disable-zlib --enable-gssapi --enable-sasl --enable-ssl || error "Failed to configure and compile dependencies"
   else
     error "Unknown kernel $KERNEL"
   fi
