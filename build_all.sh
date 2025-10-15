@@ -11,8 +11,8 @@ fi
 
 ./build.sh || error "MacOS build failed"
 
-docker build --platform linux/amd64 . -f Dockerfile -t librdkafka-builder:amd64 || error "Failed to create amd64 linux build container"
-docker build --platform linux/arm64/v8 . -f Dockerfile -t librdkafka-builder:arm64 || error "Failed to create aarch64 linux build container"
+docker build --load --platform linux/amd64 . -f Dockerfile -t librdkafka-builder:amd64 || error "Failed to create amd64 linux build container"
+docker build --load --platform linux/arm64/v8 . -f Dockerfile -t librdkafka-builder:arm64 || error "Failed to create aarch64 linux build container"
 
 docker run --rm -it --mount type=bind,source=./build.sh,destination=/build.sh --mount type=bind,source=./output,destination=/output librdkafka-builder:arm64 bash /build.sh || error "Linux aarch64 build failed"
 docker run --rm -it --mount type=bind,source=./build.sh,destination=/build.sh --mount type=bind,source=./output,destination=/output librdkafka-builder:amd64 bash /build.sh || error "Linux amd64 build failed"
