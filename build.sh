@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-VERSION=2.11.0
-SHA256=592a823dc7c09ad4ded1bc8f700da6d4e0c88ffaf267815c6f25e7450b9395ca
+VERSION=2.12.0
+SHA256=1355d81091d13643aed140ba0fe62437c02d9434b44e90975aaefab84c2bf237
 ARCH=$(uname -m)
 KERNEL=$(uname -s)
 
